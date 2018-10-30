@@ -19,6 +19,7 @@
                     <img :src="'img'+$store.state.layer1" @load="loaded"/>
                 </transition>
             </div>
+
             <div class="lupa">
                 <div class="wrap_lupa" @click="showBig">
                     <i class="fas fa-search"></i>
@@ -37,14 +38,13 @@
         },
         methods: {
             showBig() {
-
                 this.$store.commit('setLoadimgFalse');
                 let data = {
                     layer: this.$store.state.layer,
                     layer1: this.$store.state.layer1,
                     layer2: this.$store.state.layer2,
                 };
-                this.$http.post(this.$store.state.ajaxUrl,
+                this.$http.post(process.env.VUE_APP_URLAJAX,
                     data
                 ).then((response) => {
                     let that=this;

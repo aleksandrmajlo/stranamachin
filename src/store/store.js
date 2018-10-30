@@ -5,17 +5,9 @@ Vue.use(Vuex)
 
 // root state object.
 const state = {
-    // ajaxUrl:'image.php',
-    price:1000,
-    title:'Модельные чехлы «Люкс»',
-
-    ajaxUrl:'image.php',
-    // ajaxUrl:'http://stranamachin.local/image.php',
-    ajaxUrlmail:'mail.php',
-    // ajaxUrlmail:'http://stranamachin.local/mail.php',
-
+    price:PRICE,
+    title:TITLE,
     constr: {
-
         build: [
             {
                 img: 'bel.png',
@@ -33,9 +25,7 @@ const state = {
             },
 
         ],
-
         Otstrochka: [
-
             {
                 title: 'Боковины',
                 path: '/Otstrochka/Bokoviny/',
@@ -395,11 +385,11 @@ const state = {
         },
         Otstrochka:{
             title:'Отстрочка',
-            val: 'Не вырабана'
+            val: 'Не выбрана'
         },
         Vstavka:{
             title:'Вставка',
-            val: 'Не вырабана'
+            val: 'Не выбрана'
         }
     },
 
@@ -440,11 +430,8 @@ const mutations = {
         }
         state.constr[name][key].items[k].active = true;
         state[state.constr[name][key].layer] = state.constr[name][key].path + state.constr[name][key].items[k].img;
-
-        console.log(state.constr[name][key])
         state.formData[name].val=state.constr[name][key].title +"  "+ state.constr[name][key].items[k].title;
     },
-
     setLoadimg(state) {
         state.isLoad = true;
     },

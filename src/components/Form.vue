@@ -64,7 +64,7 @@
                     layer1: this.$store.state.layer1,
                     layer2: this.$store.state.layer2,
                 };
-                this.$http.post(this.$store.state.ajaxUrl,
+                this.$http.post(process.env.VUE_APP_URLAJAX,
                     data
                 ).then((response) => {
                     let that = this;
@@ -93,7 +93,6 @@
             },
             checkForm: function (e) {
                 e.preventDefault();
-
                 let myForm = document.getElementById('myForm');
                 let formData = new FormData(myForm);
                 formData.append('name', this.name);
@@ -102,13 +101,13 @@
                 formData.append('Otstrochka', this.$store.state.formData.Otstrochka.val);
                 formData.append('Vstavka', this.$store.state.formData.Vstavka.val);
 
-                this.$http.post(this.$store.state.ajaxUrlmail,
+                this.$http.post(process.env.VUE_APP_URLMAIL,
                     formData
                 ).then((response)=>{
                     this.$refs.modal.close();
                     setTimeout(() => {
                         this.$refs.suc.open();
-                    }, 500);
+                    }, 200);
                 })
 
             }

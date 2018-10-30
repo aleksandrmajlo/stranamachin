@@ -80,13 +80,10 @@
     import loading from './components/Loading'
     import Form from './components/Form'
 
-    // import { SweetModal, SweetModalTab } from 'sweet-modal-vue'
 
     export default {
         name: 'app',
         components: {
-            // SweetModal,
-            // SweetModalTab,
             optionColor, constrImage,
             optionSelect,
             Form,
