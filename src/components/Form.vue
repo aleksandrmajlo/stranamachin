@@ -63,6 +63,8 @@
                     layer: this.$store.state.layer,
                     layer1: this.$store.state.layer1,
                     layer2: this.$store.state.layer2,
+                    layer3: this.$store.state.layer3,
+                    layer4: this.$store.state.layer4,
                 };
                 this.$http.post(process.env.VUE_APP_URLAJAX,
                     data
@@ -78,6 +80,8 @@
                     img.src = response.data.img;
                 }).catch((error) => {
                     // Error
+                    this.$store.commit('setLoadimg');
+                    alert('Произошла ошибка, попробуйте позже')
                     if (error.response) {
                         console.log(error.response.data);
                         console.log(error.response.status);
@@ -87,8 +91,7 @@
                     } else {
                         console.log('Error', error.message);
                     }
-                    this.$store.commit('setLoadimg');
-                    alert('Произошла ошибка, попробуйте позже')
+
                 });
             },
             checkForm: function (e) {

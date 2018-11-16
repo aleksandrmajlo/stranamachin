@@ -1,5 +1,6 @@
 <template v-cloak>
-    <div class="option_color_block">
+    <div class="option_color_block" :class="name">
+
         <div class="option_item" v-for="(item, key) in $store.state.constr[name]" :key="key">
             <div class="subtitle">{{item.title}}</div>
             <div class="flex_item">
@@ -8,11 +9,13 @@
                         v-tooltip="v.title"
                         :class="[v.active? 'active': '']"
                         @click="option_color(key,k)"
-                        :style="'background-color:'+v.color +';'+v.border">
-                  </span>
+                        :style="{ 'background-color' : $store.state.color_setting[v.title]  ? $store.state.color_setting[v.title] : v.color,  'border' : v.border ? v.border : '' }"
+                  >
+                    </span>
                 </div>
             </div>
         </div>
+        
     </div>
 </template>
 <script>
@@ -34,6 +37,7 @@
 </script>
 
 <style scoped lang="scss">
+
     .option_color_block {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -76,5 +80,10 @@
             }
         }
 
+    }
+    .Otstrochka.option_color_block{
+         display:flex;
+         flex-wrap: wrap;
+         justify-content: space-between;
     }
 </style>

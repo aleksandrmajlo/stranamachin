@@ -14,6 +14,18 @@
                 </transition>
             </div>
 
+            <div v-show="$store.state.layer3!==''" class="layer layer3">
+                <transition>
+                     <img :src="'img'+$store.state.layer3" @load="loaded" alt="" />
+                </transition>
+            </div>
+
+            <div v-show="$store.state.layer4!==''" class="layer layer4">
+                <transition>
+                     <img :src="'img'+$store.state.layer4" @load="loaded" alt="" />
+                </transition>
+            </div>
+
             <div v-show="$store.state.layer1!==''" class="layer layer1">
                 <transition>
                     <img :src="'img'+$store.state.layer1" @load="loaded"/>
@@ -43,20 +55,31 @@
                     layer: this.$store.state.layer,
                     layer1: this.$store.state.layer1,
                     layer2: this.$store.state.layer2,
+                    layer3: this.$store.state.layer3,
+                    layer4: this.$store.state.layer4,
                 };
                 this.$http.post(process.env.VUE_APP_URLAJAX,
                     data
                 ).then((response) => {
-                    let that=this;
-                    let img = new Image();
-                    img.onload = function(){
-                        that.$store.state.result = response.data.img;
-                        that.$store.commit('setLoadimg');
-                        that.$store.commit('setFlip');
-                    };
-                    img.src = response.data.img;
+                    if(response.data.img){
+                        let that=this;
+                        let img = new Image();
+                        img.onload = function(){
+                            that.$store.state.result = response.data.img;
+                            that.$store.commit('setLoadimg');
+                            that.$store.commit('setFlip');
+                        };
+                        img.src = response.data.img;
+                    }else{
+                        this.$store.commit('setLoadimg');
+                        alert('Произошла ошибка, попробуйте позже');
+                    }
+
                 }).catch((error) => {
                     // Error
+                    this.$store.commit('setLoadimg');
+                    alert('Произошла ошибка, попробуйте позже');
+
                     if (error.response) {
                         console.log(error.response.data);
                         console.log(error.response.status);
@@ -66,8 +89,7 @@
                     } else {
                         console.log('Error', error.message);
                     }
-                    this.$store.commit('setLoadimg');
-                    alert('Произошла ошибка, попробуйте позже')
+
                 });
 
             },
@@ -89,6 +111,8 @@
 
         .wrap {
             position: relative;
+            margin-left: -80px;
+            margin-right: -120px;
             .img-box {
                 position: relative;
                 img {

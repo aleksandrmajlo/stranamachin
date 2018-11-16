@@ -8,6 +8,7 @@
 
                         <div class="left">
 
+
                             <div class=" parent-color">
                                 <div class="option_subject">
                                     Основа
@@ -17,9 +18,15 @@
                             </div>
 
                             <div class=" parent-color">
-                                <div class="option_subject">Вставка</div>
+                                <div class="option_subject">Центральная часть</div>
                                 <optionSelect name="Vstavka"></optionSelect>
                             </div>
+
+
+
+
+
+
 
                         </div>
 
@@ -28,16 +35,41 @@
                         <div class="right">
 
                             <div class=" parent-color">
+                                <div class="option_subject">Боковая часть</div>
+                                <optionSelect name="Bokovaia"></optionSelect>
+                            </div>
+
+                            <div class=" parent-color">
+                                <div class="option_subject">Вверх и низ</div>
+                                <optionSelect name="Vverkh_i_niz"></optionSelect>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="constructor  ">
+
+                        <div class=" parent-color">
                                  <span class="option_subject">
                                    Отстрочка
                                  </span>
-                            </div>
+                        </div>
+                        <optionSelect  name="Otstrochka"></optionSelect>
+                        <div class="desc">
+                            Декоративная отстрочка швов подчеркивает контуры
+                        </div>
+                    </div>
 
-                            <optionSelect name="Otstrochka"></optionSelect>
-                            <div class="desc">
-                                Декоративная отстрочка швов подчеркивает контуры
-                            </div>
 
+
+                    <div class="constructor flex_block">
+                         <div  class="left"></div>
+
+                        <div class="center">
+
+
+                            
                             <div class="buttons">
                                 <span class="price skew ">
                                      <span class="pricetext">{{$store.state.price}}</span>
@@ -50,9 +82,15 @@
                                 </span>
                             </div>
 
+                            <resultText></resultText>
+                            
+
                         </div>
 
+                         <div  class="right"></div>
                     </div>
+
+
                     <loading></loading>
                 </div>
 
@@ -76,6 +114,8 @@
 <script>
     import optionColor from './components/OptionColor.vue'
     import optionSelect from './components/OptionSelect.vue'
+    import resultText from './components/Resulttext.vue'
+
     import constrImage from './components/FonImage'
     import loading from './components/Loading'
     import Form from './components/Form'
@@ -84,10 +124,12 @@
     export default {
         name: 'app',
         components: {
-            optionColor, constrImage,
+            optionColor, 
+            constrImage,
             optionSelect,
             Form,
-            loading
+            loading,
+            resultText
         },
         mounted() {
 
@@ -201,7 +243,6 @@
         margin: 0 auto;
         position: relative;
         padding: 20px;
-        margin-bottom: 30px;
 
         img {
             max-width: 100%;
@@ -211,7 +252,7 @@
 
         .constructor_block {
             width: 958px;
-
+            margin-bottom: 30px;  
             .skew {
                 transform: skew(-18deg, 0deg);
                 -webkit-transform: skew(-18deg, 0deg);
@@ -226,19 +267,20 @@
                 justify-content: space-between;
                 .left {
                     width: 25%;
+                    z-index: 2;
                 }
                 .right {
                     width: 25%;
+                    z-index: 2;
                 }
                 .parent-color {
                     margin-bottom: 20px;
                 }
             }
-
-
             .option_subject {
                 font-size: 20px;
                 margin-bottom: 10px;
+                font-weight: bolder;
             }
             .subtitle {
                 font-style: italic;
@@ -287,9 +329,6 @@
                     border: none;
                     outline: none;
                     cursor: pointer;
-
-
-
                     a{
                         color: #FFF;
                         text-transform: uppercase;
@@ -302,16 +341,13 @@
             }
 
         }
-
         .result_block {
             width: 958px;
             .back_button {
-
                 position: absolute;
                 bottom: -10px;
                 left: 50%;
                 margin-left: -15px;
-
                 .back_over {
                     cursor: pointer;
                     padding: 6px;
@@ -321,7 +357,6 @@
             }
         }
     }
-
     .tooltip {
         display: block !important;
         z-index: 10000;

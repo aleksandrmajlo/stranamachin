@@ -18,6 +18,8 @@ if ($_POST) {
     $layer = $_POST['layer'];
     $layer1 = $_POST['layer1'];
     $layer2 = $_POST['layer2'];
+    $layer3 = $_POST['layer3'];
+    $layer4 = $_POST['layer4'];
 
     $name = str_replace('.png', '', $layer);
 
@@ -33,6 +35,18 @@ if ($_POST) {
         $name .= '__' . $layer2_name;
     }
 
+    if (file_exists($dir_img . $layer3)&&$layer3!=="") {
+        $layer3_name = str_replace('.png', '', $layer3);
+        $layer3_name = str_replace('/', '', $layer3_name);
+        $name .= '__' . $layer3_name;
+    }
+
+    if (file_exists($dir_img . $layer4)&&$layer4!=="") {
+        $layer4_name = str_replace('.png', '', $layer4);
+        $layer4_name = str_replace('/', '', $layer4_name);
+        $name .= '__' . $layer4_name;
+    }
+
     $name_img = $name . '.png';
     if (file_exists($dir_res . $name_img)) {
         echo json_encode(array('img' => '/img/result/' . $name_img));
@@ -40,11 +54,21 @@ if ($_POST) {
 
         $layer1_img =$dir_img. $layer1;
         $layer2_img =$dir_img. $layer2;
+        $layer3_img =$dir_img. $layer3;
+        $layer4_img =$dir_img. $layer4;
 
         $img = Image::make($dir_img . '/build/' . $layer);
 
         if (file_exists( $layer2_img)&&$layer2!=="") {
             $img->insert( $layer2_img);
+        }
+
+        if (file_exists( $layer3_img)&&$layer3!=="") {
+            $img->insert( $layer3_img);
+        }
+
+        if (file_exists( $layer4_img)&&$layer4!=="") {
+            $img->insert( $layer4_img);
         }
 
         if (file_exists( $layer1_img)&&$layer1!=="") {
