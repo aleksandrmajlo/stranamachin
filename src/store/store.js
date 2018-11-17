@@ -24,9 +24,6 @@ const state = {
         'Синий':'#0000ff',
         'Черный' : '#000000',
         'Черный с полосками' : '#000000',
-
-
-
     },
     photo_name: {
         'Белый': 'belyj.png',
@@ -52,7 +49,7 @@ const state = {
         build: [
 
             {
-                img: 'bel.png',
+                img: 'belyj.png',
                 title: 'Белый',
                 color: '#ffffff',
                 border: ' 3px solid #acacac',
@@ -1049,7 +1046,7 @@ const state = {
 
 
     },
-    layer: 'bel.png',
+    layer: 'belyj.png',
     layer1: "",
     layer2: "",
     layer3: "",
@@ -1092,8 +1089,11 @@ const mutations = {
         let name = ob.name,
             key = ob.key;
         if (state.constr[name][key].active) return false;
+
         for (let index = 0; index < state.constr[name].length; index++) {
 
+            console.log(index)
+            console.log(index === key)
             if (index === key) {
                 state.constr[name][index].active = true;
                 state.isLoad = false;
@@ -1103,7 +1103,6 @@ const mutations = {
                     state.layer = state.constr.build[index].img;
                 }
                 state.formData.build.val=state.constr.build[index].title;
-                state.isLoad = false;
 
             } else {
 
