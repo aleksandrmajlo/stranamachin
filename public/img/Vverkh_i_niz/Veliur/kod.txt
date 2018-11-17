@@ -1,0 +1,6 @@
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/bezhevyj.png" target="_blank">Бежевый</a>
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/krasnyj.png" target="_blank">Красный</a>
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/svetloseryj.png" target="_blank">Светлосерый</a>
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/seryj.png" target="_blank">Серый</a>
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/sinij.png" target="_blank">Синий</a>
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/chernyj.png" target="_blank">Черный</a>

@@ -1,0 +1,10 @@
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/bezhevyj.png" target="_blank">Бежевый</a>
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/goluboj.png" target="_blank">Голубой</a>
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/zheltyj.png" target="_blank">Желтый</a>
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/zolotistyj.png" target="_blank">Золотистый</a>
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/kakao.png" target="_blank">Какао</a>
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/korichnevyj.png" target="_blank">Коричневый</a>
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/krasnyj.png" target="_blank">Красный</a>
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/myshinyj.png" target="_blank">Мышиный</a>
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/salatovyj.png" target="_blank">Салатовый</a>
+<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/seryj.png" target="_blank">Серый</a>
