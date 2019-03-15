@@ -9,12 +9,8 @@
             >
             </span>
          </div>
-
-
-
     </div>
 </template>
-
 <script>
     export default {
         name: "OptionColor",
@@ -42,18 +38,18 @@
     .option_color_block {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        /*justify-content: space-between;*/
         align-items: center;
         margin-top: 10px;
         margin-bottom: 10px;
          .option_color_col{
-             padding-left: 5px;
-             padding-right: 5px;
+             padding-left: 2px;
+             padding-right: 2px;
              margin-bottom: 5px;
              .option_color {
                  display: block;
-                 width: 32px;
-                 height: 32px;
+                 width: 25px;
+                 height: 25px;
                  border-radius: 50%;
                  cursor: pointer;
                  -webkit-transition: all 0.5s ease;
@@ -64,11 +60,10 @@
                  }
              }
          }
-
-
         .option_color.active {
             border: 3px solid #01B1F1 !important;
         }
+
 
     }
 </style>

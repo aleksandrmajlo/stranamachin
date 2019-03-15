@@ -1,6 +1,5 @@
 <template v-cloak>
     <div class="option_color_block" :class="name">
-
         <div class="option_item" v-for="(item, key) in $store.state.constr[name]" :key="key">
             <div class="subtitle">{{item.title}}</div>
             <div class="flex_item">
@@ -47,24 +46,21 @@
                 margin-bottom: 10px;
             }
             .flex_item {
-
                 display: flex;
                 flex-wrap: wrap;
-
                 align-items: center;
-                justify-content: space-between;
-
+                /*justify-content: space-between;*/
                 .option_color_col {
-                    padding-left: 5px;
-                    padding-right: 5px;
+                    padding-left: 2px;
+                    padding-right: 2px;
                     margin-bottom: 5px;
                 }
                 .option_color {
-                    display: block;
-                    width: 32px;
-                    height: 32px;
-                    border-radius: 50%;
 
+                    display: block;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
                     cursor: pointer;
                     -webkit-transition: all 0.5s ease;
                     transition: all 0.5s ease;
@@ -73,6 +69,7 @@
                     &:hover {
                         border: 3px solid #01B1F1 !important;
                     }
+
                 }
                 .option_color.active {
                     border: 3px solid #01B1F1 !important;

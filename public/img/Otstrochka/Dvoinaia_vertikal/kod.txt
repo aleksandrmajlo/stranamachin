@@ -1,4 +1,0 @@
-<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/zheltyj.png" target="_blank">Желтый</a>
-<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/krasnyj.png" target="_blank">Красный</a>
-<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/seryj.png" target="_blank">Серый</a>
-<li style="margin-top: 0; margin-bottom: 10px"><a href="document/local/chernyj.png" target="_blank">Черный</a>

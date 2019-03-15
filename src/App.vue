@@ -1,164 +1,129 @@
 <template>
     <div id="app">
 
-        <div class="flip-container ">
-            <div class="flipper" :class="{ 'flip-effect': $store.state.isFlip }">
-                <div class="constructor_block front">
-                    <div class="constructor flex_block">
-
-                        <div class="left">
-
-
-                            <div class=" parent-color">
-                                <div class="option_subject">
-                                    Основа
-                                    <span style="font-size: 12px;color: #8B8B8B;top: -3px;position: relative;">выберите цвет</span>
+                <div class="flip-container ">
+                    <div class="flipper" :class="{ 'flip-effect': $store.state.isFlip }">
+                        <div class="constructor_block front">
+                            <div class="constructor flex_block">
+                                <div class="left">
+                                    <div class=" parent-color">
+                                         <models-constr></models-constr>
+                                    </div>
+                                    <div class=" parent-color">
+                                        <h4>Основа Кожа</h4>
+                                        <optionColor name="build"></optionColor>
+                                    </div>
+                                    <div class=" parent-color">
+                                        <h4>Центральная вставка</h4>
+                                        <optionSelect name="Vstavka"></optionSelect>
+                                    </div>
+                                    <div class=" parent-color">
+                                        <h4>Боковая часть кожа</h4>
+                                        <optionSelect name="Bokovaia"></optionSelect>
+                                    </div>
                                 </div>
-                                <optionColor name="build"></optionColor>
+                                <fon-constr></fon-constr>
+                                <div class="right">
+
+                                    <div class=" parent-color">
+                                        <h4>Дизайн</h4>
+                                        <optionSelect name="Dizain"></optionSelect>
+                                    </div>
+
+                                    <div class=" parent-color">
+                                        <h4>Рисунок</h4>
+                                        <optionSelect name="Risunok"></optionSelect>
+                                    </div>
+
+                                    <div class=" parent-color">
+                                        <h4>Отстрочка</h4>
+                                        <optionSelect name="Otstrochka"></optionSelect>
+                                    </div>
+
+
+                                </div>
                             </div>
 
-                            <div class=" parent-color">
-                                <div class="option_subject">Центральная часть</div>
-                                <optionSelect name="Vstavka"></optionSelect>
-                            </div>
-
-
-
-
-
-
-
-                        </div>
-
-                        <constrImage></constrImage>
-
-                        <div class="right">
-
-                            <div class=" parent-color">
-                                <div class="option_subject">Боковая часть</div>
-                                <optionSelect name="Bokovaia"></optionSelect>
-                            </div>
-
-                            <div class=" parent-color">
-                                <div class="option_subject">Вверх и низ</div>
-                                <optionSelect name="Vverkh_i_niz"></optionSelect>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="constructor  ">
-
-                        <div class=" parent-color">
-                                 <span class="option_subject">
-                                   Отстрочка
-                                 </span>
-                        </div>
-                        <optionSelect  name="Otstrochka"></optionSelect>
-                        <div class="desc">
-                            Декоративная отстрочка швов подчеркивает контуры
-                        </div>
-                    </div>
-
-
-
-                    <div class="constructor flex_block">
-                         <div  class="left"></div>
-
-                        <div class="center">
-
-
-                            
-                            <div class="buttons">
-                                <span class="price skew ">
-                                     <span class="pricetext">{{$store.state.price}}</span>
-                                      <i class="fas fa-ruble-sign"></i>
-                                 </span>
-                                <span class="addToCart_block skew ">
-                                       <a @click.prevent="addToCart" class="addToCart" href="#">
-                                         Заказать
+                            <div class="constructor flex_block">
+                                <div class="left">
+                                    <resultText></resultText>
+                                </div>
+                                <div class="center">
+                                    <div class="buttons">
+                                        <span class="addToCart_block skew ">
+                                         <a @click.prevent="addToCart" class="addToCart" href="#">
+                                            Заказать
                                        </a>
-                                </span>
+                                       </span>
+                                    </div>
+
+                                </div>
+                                <div class="right">
+
+                                </div>
                             </div>
 
-                            <resultText></resultText>
-                            
-
+                            <loading></loading>
+                        </div>
+                        <div class="result_block back">
+                            <img :src="$store.state.result" alt=""/>
+                            <div class="back_button">
+                                <div class="back_over">
+                                    <i class="fas fa-undo" @click="back"></i>
+                                </div>
+                            </div>
                         </div>
 
-                         <div  class="right"></div>
-                    </div>
-
-
-                    <loading></loading>
-                </div>
-
-                <div class="result_block back">
-                    <img :src="$store.state.result" alt=""/>
-                    <div class="back_button">
-                        <div class="back_over">
-                            <i class="fas fa-undo" @click="back"></i>
-                        </div>
                     </div>
                 </div>
+                <form-constr ref="form"></form-constr>
 
-
-            </div>
-
-        </div>
-        <Form ref="form"></Form>
     </div>
 </template>
-
 <script>
+    import modelsConstr from './components/ModelsConstr.vue'
     import optionColor from './components/OptionColor.vue'
     import optionSelect from './components/OptionSelect.vue'
     import resultText from './components/Resulttext.vue'
-
-    import constrImage from './components/FonImage'
+    import FonConstr from './components/FonConstr'
     import loading from './components/Loading'
-    import Form from './components/Form'
-
+    import formConstr from './components/formConstr'
 
     export default {
         name: 'app',
         components: {
-            optionColor, 
-            constrImage,
+            modelsConstr,
+            FonConstr,
+            optionColor,
             optionSelect,
-            Form,
+            formConstr,
             loading,
             resultText
         },
         mounted() {
+            this.$store.dispatch('getData');
 
         },
         methods: {
             addToCart() {
-
                 this.$refs.form.open();
             },
-
             back() {
                 this.$store.commit('setFlip');
             }
         }
     }
-
 </script>
-
-
 <style lang="scss">
     @import url('https://use.fontawesome.com/releases/v5.4.1/css/all.css');
-    @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=cyrillic');
 
     [v-cloak] {
         display: none
     }
-
+    .mb-20{
+        margin-bottom: 20px;
+    }
     .flip-container {
-
         -webkit-perspective: 1000;
         -moz-perspective: 1000;
         -ms-perspective: 1000;
@@ -238,21 +203,16 @@
     }
 
     #app {
-        font-family: 'Open Sans', sans-serif;
-        width: 958px;
-        margin: 0 auto;
-        position: relative;
-        padding: 20px;
 
+        width: 100%;
+        position: relative;
+        color:#fff;
         img {
             max-width: 100%;
             width: 100%;
             height: auto;
         }
-
         .constructor_block {
-            width: 958px;
-            margin-bottom: 30px;  
             .skew {
                 transform: skew(-18deg, 0deg);
                 -webkit-transform: skew(-18deg, 0deg);
@@ -260,8 +220,7 @@
                 -o-transform: skew(-18deg, 0deg);
                 -ms-transform: skew(-18deg, 0deg);
                 display: inline-block;
-            }
-
+             }
             .flex_block {
                 display: flex;
                 justify-content: space-between;
@@ -283,20 +242,20 @@
                 font-weight: bolder;
             }
             .subtitle {
-                font-style: italic;
-                color: #7c7c7c;
+                color: #fff;
+                font-weight: bold;
                 line-height: 18px;
                 display: block;
                 padding-top: 4px;
             }
             .desc {
                 font-style: italic;
-                color: #7c7c7c;
+                color: #fff;
                 line-height: 18px;
                 display: block;
                 margin-bottom: 15px;
             }
-            .buttons{
+            .buttons {
                 display: flex;
                 align-items: center;
                 .price {
@@ -329,7 +288,7 @@
                     border: none;
                     outline: none;
                     cursor: pointer;
-                    a{
+                    a {
                         color: #FFF;
                         text-transform: uppercase;
                         font-size: 18px;
@@ -356,15 +315,21 @@
                 }
             }
         }
+        h4{
+            color: #FFF;
+        }
+        
     }
+
     .tooltip {
         display: block !important;
         z-index: 10000;
         .tooltip-inner {
             background: black;
+            border:#fff 1px solid;
             color: white;
             border-radius: 16px;
-            padding: 5px 10px 4px;
+            padding: 5px 10px;
         }
         .tooltip-arrow {
             width: 0;
@@ -461,5 +426,8 @@
             opacity: 1;
             transition: opacity .15s;
         }
+
+
+
     }
 </style>
