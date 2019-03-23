@@ -3,12 +3,14 @@
          <div class="mb-20">
            <h4>Марка:</h4>
             <select v-model="marka" class="form-control">
+                <option value="-1">Выбрать</option>
                 <option v-for="(model,index) in $store.state.models" :value="index" :key="index">{{model.title}}</option>
             </select>
          </div>
          <div class="mb-20">
                <h4>Модель:</h4>
                 <select v-model="model"  class="form-control">
+                    <option value="-1">Выбрать</option>
                    <option v-for="(model,index) in models" :value="index" :key="index">{{model}}</option>
                 </select>
          </div>
@@ -18,11 +20,10 @@
 export default {
     data(){
         return {
-            marka:"",
-            model:""
+            marka:"-1",
+            model:"-1"
         } 
     },
-
     computed: {
          models(){
              if(this.$store.state.activeMarka||this.$store.state.activeMarka===0){

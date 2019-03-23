@@ -1,7 +1,6 @@
 <template>
     <div class="build">
         <div class="wrap">
-
             <div class="img-box">
                 <transition>
                     <img :src="'img/build/'+$store.state.layer" @load="loaded"/>
@@ -17,8 +16,6 @@
                     <img :src="'img'+$store.state.layer3" @load="loaded" alt=""/>
                 </transition>
             </div>
-
-
             <div v-show="$store.state.layer4!==''" class="layer layer4">
                 <transition>
                     <img :src="'img'+$store.state.layer4" @load="loaded" alt=""/>
@@ -30,19 +27,16 @@
                     <img :src="'img'+$store.state.layer5" @load="loaded" alt=""/>
                 </transition>
             </div>
-
             <div v-show="$store.state.layer1!==''" class="layer layer1">
                 <transition>
                     <img :src="'img'+$store.state.layer1" @load="loaded"/>
                 </transition>
             </div>
-
             <div class="lupa">
                 <div class="wrap_lupa" @click="showBig">
                     <i class="fas fa-search"></i>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
@@ -61,8 +55,9 @@
                     layer2: this.$store.state.layer2,
                     layer3: this.$store.state.layer3,
                     layer4: this.$store.state.layer4,
+                    layer5: this.$store.state.layer5,
                 };
-                this.$http.post(process.env.VUE_APP_URLAJAX,
+                this.$http.post(imageUrl,
                     data
                 ).then((response) => {
                     if (response.data.img) {

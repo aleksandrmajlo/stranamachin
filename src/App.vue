@@ -1,68 +1,62 @@
 <template>
     <div id="app">
-
                 <div class="flip-container ">
-                    <div class="flipper" :class="{ 'flip-effect': $store.state.isFlip }">
+                    <div :style="{'min-height':Height+'px'}" class="flipper" :class="{ 'flip-effect': $store.state.isFlip }">
                         <div class="constructor_block front">
-                            <div class="constructor flex_block">
+                            <div class="getHeight constructor flex_block">
                                 <div class="left">
                                     <div class=" parent-color">
                                          <models-constr></models-constr>
                                     </div>
                                     <div class=" parent-color">
                                         <h4>Основа Кожа</h4>
-                                        <optionColor name="build"></optionColor>
+                                        <optioncolor-constr name="build"></optioncolor-constr>
                                     </div>
                                     <div class=" parent-color">
                                         <h4>Центральная вставка</h4>
-                                        <optionSelect name="Vstavka"></optionSelect>
+                                        <optionselect-constr name="Vstavka"></optionselect-constr>
                                     </div>
                                     <div class=" parent-color">
                                         <h4>Боковая часть кожа</h4>
-                                        <optionSelect name="Bokovaia"></optionSelect>
+                                        <optionselect-constr name="Bokovaia"></optionselect-constr>
+                                    </div>
+                                    <div class=" parent-color">
+                                        <h4>Дизайн</h4>
+                                        <optionselect-constr name="Dizain"></optionselect-constr>
                                     </div>
                                 </div>
                                 <fon-constr></fon-constr>
                                 <div class="right">
 
                                     <div class=" parent-color">
-                                        <h4>Дизайн</h4>
-                                        <optionSelect name="Dizain"></optionSelect>
-                                    </div>
-
-                                    <div class=" parent-color">
                                         <h4>Рисунок</h4>
-                                        <optionSelect name="Risunok"></optionSelect>
+                                        <hr class="ffffff">
+                                        <optiongroup-constr name="RisunokSotu"></optiongroup-constr>
+                                        <optiongroup-constr name="RisunokRomb"></optiongroup-constr>
+                                        <optiongroup-constr name="RisunokClassic"></optiongroup-constr>
                                     </div>
-
                                     <div class=" parent-color">
                                         <h4>Отстрочка</h4>
-                                        <optionSelect name="Otstrochka"></optionSelect>
+                                        <optionselect-constr name="Otstrochka"></optionselect-constr>
                                     </div>
-
-
                                 </div>
                             </div>
-
-                            <div class="constructor flex_block">
-                                <div class="left">
-                                    <resultText></resultText>
+                            <div class="getHeight  constructor flex_block flex_block_three ">
+                                <div class="item33">
+                                    <resulttext-constr></resulttext-constr>
                                 </div>
-                                <div class="center">
-                                    <div class="buttons">
-                                        <span class="addToCart_block skew ">
-                                         <a @click.prevent="addToCart" class="addToCart" href="#">
+                                <div class="item33 pdl-20">
+                                     <price-constr></price-constr>
+                                </div>
+                                <div class="item33 pdl-20">
+                                    <div class="buttons ">
+                                        <h4>Оформить заказ в один клик:</h4>
+                                        <a @click.prevent="addToCart" class="btn btn-warning btn-lg" href="#">
                                             Заказать
-                                       </a>
-                                       </span>
+                                        </a>
                                     </div>
-
-                                </div>
-                                <div class="right">
-
                                 </div>
                             </div>
-
                             <loading></loading>
                         </div>
                         <div class="result_block back">
@@ -81,27 +75,44 @@
     </div>
 </template>
 <script>
-    import modelsConstr from './components/ModelsConstr.vue'
-    import optionColor from './components/OptionColor.vue'
-    import optionSelect from './components/OptionSelect.vue'
-    import resultText from './components/Resulttext.vue'
+    import ModelsConstr from './components/ModelsConstr.vue'
+    import OptioncolorConstr from './components/OptioncolorConstr'
+    import OptiongroupConstr from './components/OptiongroupConstr.vue'
+    import OptionselectConstr from './components/OptionselectConstr.vue'
+    import ResulttextConstr from './components/ResulttextConstr.vue'
     import FonConstr from './components/FonConstr'
+
+    
+    import FormConstr from './components/FormConstr'
+    import PriceConstr from './components/PriceConstr'
     import loading from './components/Loading'
-    import formConstr from './components/formConstr'
 
     export default {
         name: 'app',
+        data(){
+            return {
+                Height:0
+            }
+        },
         components: {
-            modelsConstr,
+            ModelsConstr,
             FonConstr,
-            optionColor,
-            optionSelect,
-            formConstr,
+            OptioncolorConstr,
+            OptiongroupConstr,
+            OptionselectConstr,
+            FormConstr,
+            PriceConstr ,
             loading,
-            resultText
+            ResulttextConstr
         },
         mounted() {
             this.$store.dispatch('getData');
+             this.minHeigth();
+            this.$nextTick(() => {
+                window.addEventListener('resize', () => {
+                    this.minHeigth();
+                });
+            })
 
         },
         methods: {
@@ -110,18 +121,21 @@
             },
             back() {
                 this.$store.commit('setFlip');
+            },
+            minHeigth(){
+                let list = document.getElementsByClassName("getHeight");
+                this.Height=0;
+                for (let item of list) {
+                    this.Height+=item.clientHeight;                
+                }             
             }
         }
     }
 </script>
 <style lang="scss">
     @import url('https://use.fontawesome.com/releases/v5.4.1/css/all.css');
-
     [v-cloak] {
         display: none
-    }
-    .mb-20{
-        margin-bottom: 20px;
     }
     .flip-container {
         -webkit-perspective: 1000;
@@ -133,7 +147,6 @@
         -moz-transform-style: preserve-3d;
         -ms-transform-style: preserve-3d;
     }
-
     .flip-container .flip-effect .back {
         -webkit-transform: rotateY(0deg);
         -moz-transform: rotateY(0deg);
@@ -141,15 +154,15 @@
         -ms-transform: rotateY(0deg);
         transform: rotateY(0deg);
     }
-
     .flip-container .flip-effect .front {
         -webkit-transform: rotateY(180deg);
         -moz-transform: rotateY(180deg);
         -o-transform: rotateY(180deg);
         transform: rotateY(180deg);
+     
     }
-
     .flipper {
+           min-height: 1000px;
         -webkit-transition: 0.6s;
         -webkit-transform-style: preserve-3d;
         -ms-transition: 0.6s;
@@ -160,7 +173,6 @@
         transition: 0.6s;
         transform-style: preserve-3d;
     }
-
     .front, .back {
         -webkit-backface-visibility: hidden;
         -moz-backface-visibility: hidden;
@@ -181,19 +193,17 @@
         transition: 0.6s;
         transform-style: preserve-3d;
         transform: rotateY(0deg);
-
         backface-visibility: hidden;
         position: absolute;
         top: 0;
         left: 0;
+        width: 100%;
     }
-
     .front {
         -webkit-transform: rotateY(0deg);
         -ms-transform: rotateY(0deg);
         z-index: 12;
     }
-
     .back {
         -webkit-transform: rotateY(-180deg);
         -moz-transform: rotateY(-180deg);
@@ -201,10 +211,7 @@
         -ms-transform: rotateY(-180deg);
         transform: rotateY(-180deg);
     }
-
     #app {
-
-        width: 100%;
         position: relative;
         color:#fff;
         img {
@@ -236,6 +243,15 @@
                     margin-bottom: 20px;
                 }
             }
+            .flex_block_three{
+                .item33{
+                     width: 33.33333%;
+                     box-sizing: border-box;
+                }
+                .pdl-20{
+                     padding-left: 20px;
+                }
+            }
             .option_subject {
                 font-size: 20px;
                 margin-bottom: 10px;
@@ -256,52 +272,12 @@
                 margin-bottom: 15px;
             }
             .buttons {
-                display: flex;
-                align-items: center;
-                .price {
-                    font-size: 25px;
-                    font-weight: 400;
-
-                    padding-right: 10px;
-                    padding-left: 10px;
-
-                    background: #000000;
-                    color: #fff;
-                    height: 46px;
-                    line-height: 46px;
-                    text-align: center;
-                    .pricetext {
-                        margin-right: 5px;
-                    }
-                }
-                .addToCart_block {
-                    display: inline-block;
-                    background: #01B1F1;
-                    width: 150px;
-                    height: 46px;
-                    line-height: 46px;
-                    text-transform: uppercase;
-                    font-size: 16px;
-                    text-align: center;
-                    color: #fff;
-                    font-weight: 400;
-                    border: none;
-                    outline: none;
-                    cursor: pointer;
-                    a {
-                        color: #FFF;
-                        text-transform: uppercase;
-                        font-size: 18px;
-                        font-weight: bold;
-                        text-decoration: navajowhite;
-                    }
-
-                }
+               
             }
 
         }
         .result_block {
-            width: 958px;
+            width: 100%;
             .back_button {
                 position: absolute;
                 bottom: -10px;
@@ -318,7 +294,56 @@
         h4{
             color: #FFF;
         }
+        .flex_item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            .option_color_col {
+                padding-left: 2px;
+                padding-right: 2px;
+                margin-bottom: 5px;
+            }
+            .option_color {
+                display: block;
+                position: relative;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                cursor: pointer;
+                -webkit-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+                box-sizing: border-box;
+                border: 1px solid gray;
+            }
+            .option_color.active[title="Белый"] ,
+            .option_color.active[title="Желтый"] {
+                &:before{
+                    content: '\2714';
+                    position: absolute;
+                    top: -5px;
+                    left: 0;
+                    font-size: 25px;
+                    color: gray;
+                }
+            }
+            .option_color.active {
+                &:before{
+                    content: '\2714';
+                    position: absolute;
+                    top: -5px;
+                    left: 0;
+                    font-size: 25px;
+                    color: #FFF;
+                }
+            }
+
+        }
+
         
+    }
+
+    hr.ffffff{
+         background: #ffffff;
     }
 
     .tooltip {
@@ -429,5 +454,8 @@
 
 
 
+    }
+    .mb-20{
+        margin-bottom: 20px;
     }
 </style>
