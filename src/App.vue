@@ -1,77 +1,75 @@
 <template>
     <div id="app">
-                <div class="flip-container ">
-                    <div :style="{'min-height':Height+'px'}" class="flipper" :class="{ 'flip-effect': $store.state.isFlip }">
-                        <div class="constructor_block front">
-                            <div class="getHeight constructor flex_block">
-                                <div class="left">
-                                    <div class=" parent-color">
-                                         <models-constr></models-constr>
-                                    </div>
-                                    <div class=" parent-color">
-                                        <h4>Основа Кожа</h4>
-                                        <optioncolor-constr name="build"></optioncolor-constr>
-                                    </div>
-                                    <div class=" parent-color">
-                                        <h4>Центральная вставка</h4>
-                                        <optionselect-constr name="Vstavka"></optionselect-constr>
-                                    </div>
-                                    <div class=" parent-color">
-                                        <h4>Боковая часть кожа</h4>
-                                        <optionselect-constr name="Bokovaia"></optionselect-constr>
-                                    </div>
-                                    <div class=" parent-color">
-                                        <h4>Дизайн</h4>
-                                        <optionselect-constr name="Dizain"></optionselect-constr>
-                                    </div>
-                                </div>
-                                <fon-constr></fon-constr>
-                                <div class="right">
-
-                                    <div class=" parent-color">
-                                        <h4>Рисунок</h4>
-                                        <hr class="ffffff">
-                                        <optiongroup-constr name="RisunokSotu"></optiongroup-constr>
-                                        <optiongroup-constr name="RisunokRomb"></optiongroup-constr>
-                                        <optiongroup-constr name="RisunokClassic"></optiongroup-constr>
-                                    </div>
-                                    <div class=" parent-color">
-                                        <h4>Отстрочка</h4>
-                                        <optionselect-constr name="Otstrochka"></optionselect-constr>
-                                    </div>
-                                </div>
+        <div class="flip-container ">
+            <div :style="{'min-height':$store.state.Height+'px'}" class="flipper" :class="{ 'flip-effect': $store.state.isFlip }">
+                <div class="constructor_block front">
+                    <div class="getHeight constructor flex_block">
+                        <div class="left">
+                            <div class=" parent-color">
+                                <models-constr></models-constr>
                             </div>
-                            <div class="getHeight  constructor flex_block flex_block_three ">
-                                <div class="item33">
-                                    <resulttext-constr></resulttext-constr>
-                                </div>
-                                <div class="item33 pdl-20">
-                                     <price-constr></price-constr>
-                                </div>
-                                <div class="item33 pdl-20">
-                                    <div class="buttons ">
-                                        <h4>Оформить заказ в один клик:</h4>
-                                        <a @click.prevent="addToCart" class="btn btn-warning btn-lg" href="#">
-                                            Заказать
-                                        </a>
-                                    </div>
-                                </div>
+                            <div class=" parent-color">
+                                <h4>Основа Кожа</h4>
+                                <optioncolor-constr name="build"></optioncolor-constr>
                             </div>
-                            <loading></loading>
-                        </div>
-                        <div class="result_block back">
-                            <img :src="$store.state.result" alt=""/>
-                            <div class="back_button">
-                                <div class="back_over">
-                                    <i class="fas fa-undo" @click="back"></i>
-                                </div>
+                            <div class=" parent-color">
+                                <h4>Центральная вставка</h4>
+                                <optionselect-constr name="Vstavka"></optionselect-constr>
+                            </div>
+                            <div class=" parent-color">
+                                <h4>Боковая часть кожа</h4>
+                                <optionselect-constr name="Bokovaia"></optionselect-constr>
+                            </div>
+                            <div class=" parent-color">
+                                <h4>Дизайн</h4>
+                                <optionselect-constr name="Dizain"></optionselect-constr>
                             </div>
                         </div>
+                        <fon-constr></fon-constr>
+                        <div class="right">
 
+                            <div class=" parent-color">
+                                <h4>Рисунок</h4>
+                                <hr class="ffffff">
+                                <optiongroup-constr name="RisunokSotu"></optiongroup-constr>
+                                <optiongroup-constr name="RisunokRomb"></optiongroup-constr>
+                                <optiongroup-constr name="RisunokClassic"></optiongroup-constr>
+                            </div>
+                            <div class=" parent-color">
+                                <h4>Отстрочка</h4>
+                                <optionselect-constr name="Otstrochka"></optionselect-constr>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="getHeight  constructor flex_block flex_block_three ">
+                        <div class="item33">
+                            <resulttext-constr></resulttext-constr>
+                        </div>
+                        <div class="item33 pdl-20">
+                            <price-constr></price-constr>
+                        </div>
+                        <div class="item33 pdl-20">
+                            <div class="buttons ">
+                                <h4>Оформить заказ в один клик:</h4>
+                                <a @click.prevent="addToCart" class="btn btn-warning btn-lg" href="#">
+                                    Заказать
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <loading></loading>
+                </div>
+                <div class="result_block back">
+                    <img :src="$store.state.result" alt=""/>
+                    <div class="back_button">
+                        <div class="back_over">
+                            <i class="fas fa-undo" @click="back"></i>
+                        </div>
                     </div>
                 </div>
-                <form-constr ref="form"></form-constr>
-
+            </div>
+        </div>
+        <form-constr ref="form"></form-constr>
     </div>
 </template>
 <script>
@@ -82,16 +80,16 @@
     import ResulttextConstr from './components/ResulttextConstr.vue'
     import FonConstr from './components/FonConstr'
 
-    
+
     import FormConstr from './components/FormConstr'
     import PriceConstr from './components/PriceConstr'
     import loading from './components/Loading'
 
     export default {
         name: 'app',
-        data(){
+        data() {
             return {
-                Height:0
+                // Height: 0
             }
         },
         components: {
@@ -101,19 +99,19 @@
             OptiongroupConstr,
             OptionselectConstr,
             FormConstr,
-            PriceConstr ,
+            PriceConstr,
             loading,
             ResulttextConstr
         },
         mounted() {
             this.$store.dispatch('getData');
-             this.minHeigth();
+            this.$store.commit('minHeigth');
+
             this.$nextTick(() => {
                 window.addEventListener('resize', () => {
-                    this.minHeigth();
+                    this.$store.commit('minHeigth');
                 });
             })
-
         },
         methods: {
             addToCart() {
@@ -122,13 +120,15 @@
             back() {
                 this.$store.commit('setFlip');
             },
-            minHeigth(){
+            /*
+            minHeigth() {
                 let list = document.getElementsByClassName("getHeight");
-                this.Height=0;
+                this.Height = 0;
                 for (let item of list) {
-                    this.Height+=item.clientHeight;                
-                }             
+                    this.Height += item.clientHeight;
+                }
             }
+            */
         }
     }
 </script>
@@ -159,10 +159,9 @@
         -moz-transform: rotateY(180deg);
         -o-transform: rotateY(180deg);
         transform: rotateY(180deg);
-     
     }
     .flipper {
-           min-height: 1000px;
+        min-height: 1000px;
         -webkit-transition: 0.6s;
         -webkit-transform-style: preserve-3d;
         -ms-transition: 0.6s;
@@ -213,7 +212,7 @@
     }
     #app {
         position: relative;
-        color:#fff;
+        color: #fff;
         img {
             max-width: 100%;
             width: 100%;
@@ -227,7 +226,7 @@
                 -o-transform: skew(-18deg, 0deg);
                 -ms-transform: skew(-18deg, 0deg);
                 display: inline-block;
-             }
+            }
             .flex_block {
                 display: flex;
                 justify-content: space-between;
@@ -243,13 +242,13 @@
                     margin-bottom: 20px;
                 }
             }
-            .flex_block_three{
-                .item33{
-                     width: 33.33333%;
-                     box-sizing: border-box;
+            .flex_block_three {
+                .item33 {
+                    width: 33.33333%;
+                    box-sizing: border-box;
                 }
-                .pdl-20{
-                     padding-left: 20px;
+                .pdl-20 {
+                    padding-left: 20px;
                 }
             }
             .option_subject {
@@ -272,9 +271,8 @@
                 margin-bottom: 15px;
             }
             .buttons {
-               
-            }
 
+            }
         }
         .result_block {
             width: 100%;
@@ -291,7 +289,7 @@
                 }
             }
         }
-        h4{
+        h4 {
             color: #FFF;
         }
         .flex_item {
@@ -315,9 +313,9 @@
                 box-sizing: border-box;
                 border: 1px solid gray;
             }
-            .option_color.active[title="Белый"] ,
+            .option_color.active[title="Белый"],
             .option_color.active[title="Желтый"] {
-                &:before{
+                &:before {
                     content: '\2714';
                     position: absolute;
                     top: -5px;
@@ -327,7 +325,7 @@
                 }
             }
             .option_color.active {
-                &:before{
+                &:before {
                     content: '\2714';
                     position: absolute;
                     top: -5px;
@@ -339,19 +337,16 @@
 
         }
 
-        
     }
-
-    hr.ffffff{
-         background: #ffffff;
+    hr.ffffff {
+        background: #ffffff;
     }
-
     .tooltip {
         display: block !important;
         z-index: 10000;
         .tooltip-inner {
             background: black;
-            border:#fff 1px solid;
+            border: #fff 1px solid;
             color: white;
             border-radius: 16px;
             padding: 5px 10px;
@@ -378,7 +373,6 @@
                 margin-bottom: 0;
             }
         }
-
         &[x-placement^="bottom"] {
             margin-top: 5px;
 
@@ -393,7 +387,6 @@
                 margin-bottom: 0;
             }
         }
-
         &[x-placement^="right"] {
             margin-left: 5px;
 
@@ -408,10 +401,8 @@
                 margin-right: 0;
             }
         }
-
         &[x-placement^="left"] {
             margin-right: 5px;
-
             .tooltip-arrow {
                 border-width: 5px 0 5px 5px;
                 border-top-color: transparent !important;
@@ -423,7 +414,6 @@
                 margin-right: 0;
             }
         }
-
         &.popover {
             $color: #f9f9f9;
 
@@ -439,23 +429,18 @@
                 border-color: $color;
             }
         }
-
         &[aria-hidden='true'] {
             visibility: hidden;
             opacity: 0;
             transition: opacity .15s, visibility .15s;
         }
-
         &[aria-hidden='false'] {
             visibility: visible;
             opacity: 1;
             transition: opacity .15s;
         }
-
-
-
     }
-    .mb-20{
+    .mb-20 {
         margin-bottom: 20px;
     }
 </style>

@@ -59,9 +59,8 @@
         },
         watch:{
             type(newValue){
-                if("Dizain"==this.name){
-                   this.$store.commit('setDizainActive',newValue);
-                }
+                this.$store.commit('setActiveLevel1',{name:this.name,val:newValue});
+                this.$store.commit('setTotal');
             }
         }
     }

@@ -4,12 +4,17 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const state = {
     models: [],
-    activeMarka: false,
-    activeModel: false,
+    activeMarka: "-1",
+    activeModel: "-1",
+    Total: 0,
+
+    Height:1000,
+
 
     color_setting: {
         'Черный': '#000000',
         'Черный с полосками': '#000000',
+        'Серый  с полосками': '#808080',
         'Серый': '#808080',
         "Белый": "#ffffff",
         'Красный': '#FF0000',
@@ -24,6 +29,7 @@ const state = {
     photo_name: {
         'Черный': 'CHernyj.png',
         'Черный с полосками': 'CHernyj_s_poloskami.png',
+        'Серый  с полосками': 'seryj_s_poloskami.png',
         'Серый': 'seryj.png',
         'Белый': 'belyj.png',
         'Красный': 'krasnyj.png',
@@ -35,7 +41,8 @@ const state = {
         'Зеленый': 'zelenyj.png',
     },
     constr: {
-        build: [{
+        build: [
+            {
                 title: 'Черный',
                 active: false
             },
@@ -72,11 +79,14 @@ const state = {
                 active: false
             },
         ],
-        Vstavka: [{
+        Vstavka: [
+            {
                 title: 'Кожа перфорированная',
                 path: '/Vstavka/kozha/',
                 layer: 'layer2',
-                items: [{
+                active: true,
+                items: [
+                    {
                         title: 'Черный',
                         active: false
                     },
@@ -119,6 +129,7 @@ const state = {
                 title: 'Велюр',
                 path: '/Vstavka/Veliur/',
                 layer: 'layer2',
+                active: false,
                 items: [{
                         title: 'Черный',
                         active: false
@@ -148,6 +159,7 @@ const state = {
                 title: 'Алькантара',
                 path: '/Vstavka/Alkantara/',
                 layer: 'layer2',
+                active: false,
                 items: [{
                         title: 'Черный',
                         active: false
@@ -175,6 +187,7 @@ const state = {
                 title: 'Жаккард',
                 path: '/Vstavka/ZHakkard/',
                 layer: 'layer2',
+                active: false,
                 items: [{
                         title: 'Черный',
                         active: false
@@ -187,8 +200,13 @@ const state = {
                         title: 'Синий',
                         active: false
                     },
+
                     {
                         title: 'Зеленый',
+                        active: false
+                    },
+                    {
+                        title: 'Серый  с полосками',
                         active: false
                     },
 
@@ -200,6 +218,7 @@ const state = {
             title: 'Кожа',
             path: '/Bokovaia/kozha/',
             layer: 'layer4',
+            active: true,
             items: [
 
                 {
@@ -243,7 +262,8 @@ const state = {
 
             ]
         }, ],
-        Dizain: [{
+        Dizain: [
+            {
                 title: 'Не выбран',
                 active: true
             },
@@ -262,8 +282,7 @@ const state = {
                 path: '/Dizain/Maika/',
                 layer: 'layer3',
                 active: false,
-                items: [
-                ]
+                items: []
             },
 
 
@@ -275,7 +294,8 @@ const state = {
 
                 {
                     title: '1',
-                    items: [{
+                    items: [
+                        {
                             name: "Отрезной",
                             path: '/Risunok/sota/1/otr/',
                             innerItems: [
@@ -297,12 +317,13 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
                             ]
                         },
+                        /*
                         {
                             name: "Цельный",
                             path: '/Risunok/sota/1/cel/',
@@ -331,13 +352,15 @@ const state = {
 
                             ]
                         }
+                        */
                     ]
                 },
 
 
                 {
                     title: '2',
-                    items: [{
+                    items: [
+                        {
                             name: "Отрезной",
                             path: '/Risunok/sota/2/otr/',
                             innerItems: [
@@ -359,12 +382,13 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
                             ]
                         },
+                        /*
                         {
                             name: "Цельный",
                             path: '/Risunok/sota/2/cel/',
@@ -393,12 +417,14 @@ const state = {
 
                             ]
                         }
+                        */
                     ]
                 },
 
                 {
                     title: '3',
-                    items: [{
+                    items: [
+                        {
                             name: "Отрезной",
                             path: '/Risunok/sota/3/otr/',
                             innerItems: [
@@ -420,12 +446,13 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
                             ]
                         },
+                        /*
                         {
                             name: "Цельный",
                             path: '/Risunok/sota/3/cel/',
@@ -454,6 +481,7 @@ const state = {
 
                             ]
                         }
+                        */
                     ]
                 },
 
@@ -481,12 +509,13 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
                             ]
                         },
+                        /*
                         {
                             name: "Цельный",
                             path: '/Risunok/sota/19/cel/',
@@ -515,6 +544,7 @@ const state = {
 
                             ]
                         }
+                        */
                     ]
                 },
 
@@ -526,7 +556,8 @@ const state = {
             layer: 'layer5',
             itemsGroup: [{
                     title: '5',
-                    items: [{
+                    items: [
+                        {
                             name: "Отрезной",
                             path: '/Risunok/Romb/5/otr/',
                             innerItems: [
@@ -548,7 +579,7 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
@@ -576,7 +607,7 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
@@ -608,7 +639,7 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
@@ -668,7 +699,7 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
@@ -696,7 +727,7 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
@@ -728,7 +759,7 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
@@ -756,7 +787,7 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
@@ -788,7 +819,7 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
@@ -816,7 +847,7 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
@@ -853,7 +884,7 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
@@ -886,7 +917,7 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
@@ -919,7 +950,7 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
@@ -952,7 +983,7 @@ const state = {
                                     active: false
                                 },
                                 {
-                                    title: 'Желтый',
+                                    title: 'Синий',
                                     active: false
                                 },
 
@@ -968,6 +999,7 @@ const state = {
             title: 'Одинарная',
             path: '/Otstrochka/Odinarnaia/',
             layer: 'layer1',
+            active: true,
             items: [{
                     title: 'Черный',
                     active: false
@@ -1010,10 +1042,9 @@ const state = {
         }, ],
     },
 
-
     layer: 'belyj.png',
     layer1: "", //Otstrochka
-    layer2: "",
+    layer2: "",//Центральная вставка
     layer3: "", //Dizain
     layer4: "", //Боковая
     layer5: "", // для рисунка
@@ -1027,17 +1058,17 @@ const state = {
         Vstavka: {
             title: 'Центральная часть',
             val: 'Не выбрана',
-            key: false
+            key: 0
         },
         Dizain: {
             title: 'Дизайн',
             val: 'Не выбран',
-            key: false
+            key: 0
         },
         Bokovaia: {
             title: 'Боковая часть',
             val: 'Не выбрана',
-            key: false
+            key: 0
         },
         RisunokSotu: {
             title: 'Рисунок соты',
@@ -1057,7 +1088,7 @@ const state = {
         Otstrochka: {
             title: 'Отстрочка',
             val: 'Не выбрана',
-            key: false
+            key: 0
         },
 
 
@@ -1070,6 +1101,31 @@ const state = {
 
 
 const mutations = {
+    // цена заказа
+    setTotal(state) {
+        if (
+            (state.activeMarka || state.activeMarka === 0) &&
+            state.activeMarka !== "-1" &&
+            (state.activeModel || state.activeModel === 0) &&
+            state.activeModel !== "-1"
+        ) {
+            let item = state.models[state.activeMarka].items[state.activeModel],
+                key = state.formData.Vstavka.key;
+            if (key === 0) {
+                state.Total = item.Ekokozha;
+            } else if (key === 1) {
+                state.Total = item.Veliur_zhakkard;
+            } else if (key === 2) {
+                state.Total = item.Ekokozha_alkantara;
+            } else if (key === 3) {
+                state.Total = item.Veliur_zhakkard;
+            } else {
+                state.Total = item.Veliur_zhakkard;
+            }
+        } else {
+            state.Total = 0;
+        }
+    },
     // загрузка json
     setData(state, data) {
         state.models = data.models;
@@ -1100,9 +1156,9 @@ const mutations = {
                 state.formData.build.val = state.constr.build[index].title;
             } else {
                 state.constr[name][index].active = false;
-
             }
         }
+        this.commit('minHeigth');
     },
     // установка активного слоя для типа селект
     activeOption(state, ob) {
@@ -1128,6 +1184,7 @@ const mutations = {
         state[state.constr[name][key].layer] = state.constr[name][key].path + state.photo_name[state.constr[name][key].items[k].title];
         state.formData[name].val = state.constr[name][key].title + "  " + state.constr[name][key].items[k].title;
         state.formData[name].key = key;
+        this.commit('minHeigth');
     },
     // установка активной соты ...
     activeSotu(state, ob) {
@@ -1151,7 +1208,7 @@ const mutations = {
         state.formData[name].val = state.constr[name].titleGroup + " / " +
             state.constr[name].itemsGroup[activeIndex].title +
             " / " + state.constr[name].itemsGroup[activeIndex].items[key].innerItems[k].title;
-
+        this.commit('minHeigth');
     },
     // удаление активноой соты при переключении между 1 2 
     clearActiveSotu(state) {
@@ -1170,6 +1227,7 @@ const mutations = {
                 }
             });
         });
+        this.commit('minHeigth');
     },
     setLoadimg(state) {
         state.isLoad = true;
@@ -1180,13 +1238,18 @@ const mutations = {
     setFlip(state) {
         state.isFlip = !state.isFlip;
     },
-    // устанавливаем активный индекс дизайна
-    setDizainActive(state, val) {
-        state.constr.Dizain.forEach(element => {
+    // устанавливаем активный индекс первого уровня
+    setActiveLevel1(state, ob) {
+        let name = ob.name,
+            val = ob.val;
+        state.constr[name].forEach(element => {
             element.active = false;
         });
-        state.constr.Dizain[val].active = true;
-        this.commit('setDizainItems');
+        state.constr[name][val].active = true;
+        state.formData[name].key = val;
+        if (name == "Dizain") {
+            this.commit('setDizainItems');
+        }
     },
     // добавление значений в дизайн
     setDizainItems(state) {
@@ -1220,6 +1283,17 @@ const mutations = {
             state.formData.Dizain.val = "Не выбран";
             state.formData.Dizain.key = false;
         }
+    },
+    // установка высоты
+    minHeigth(state) {
+        setTimeout(()=>{
+            let list = document.getElementsByClassName("getHeight");
+            state.Height = 0;
+            for (let item of list) {
+                state.Height += item.clientHeight;
+            }
+            state.Height+=10;
+        },400)
     }
 }
 const actions = {
@@ -1230,28 +1304,7 @@ const actions = {
         });
     }
 }
-const getters = {
-    Total(state) {
-        if ((state.activeMarka || state.activeMarka === 0) && state.activeMarka !== -1 && (state.activeModel || state.activeModel === 0) && state.activeModel !== -1) {
-            let item = state.models[state.activeMarka].items[state.activeModel],
-                key = state.formData.Vstavka.key;
-            if (key === 0) {
-                return item.Ekokozha;
-            } else if (key == 1) {
-                return item.Veliur_zhakkard;
-            } else if (key == 2) {
-                return item.Ekokozha_alkantara;
-            } else if (key == 3) {
-                return item.Veliur_zhakkard;
-            } else {
-                return item.Veliur_zhakkard;
-            }
-        } else {
-            return 0;
-        }
-    },
-
-}
+const getters = {}
 export default new Vuex.Store({
     state,
     getters,

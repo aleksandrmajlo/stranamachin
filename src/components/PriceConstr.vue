@@ -1,6 +1,6 @@
 <template>
     <div class="priceBlock ">
-          <h4>Стоимость:</h4><h3>{{$store.getters.Total}} <i class="fas fa-ruble-sign"></i></h3>
+          <h4>Стоимость:</h4><h3>{{$store.state.Total}} <i class="fas fa-ruble-sign"></i></h3>
     </div>
 </template>
 <script>

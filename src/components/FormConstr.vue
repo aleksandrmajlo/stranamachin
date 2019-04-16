@@ -21,7 +21,7 @@
                     </div>
                     <h2 class="text-center">Ваш заказ:</h2>
                     <div class="price">
-                        <strong> Цена:</strong> {{$store.getters.Total}} <i class="fas fa-ruble-sign"></i>
+                        <strong> Цена:</strong> {{$store.state.Total}} <i class="fas fa-ruble-sign"></i>
                     </div>
 
                     <div class="char">
@@ -78,12 +78,10 @@
             },
             checkForm: function (e) {
                 e.preventDefault();
-
                 let myForm = document.getElementById('myForm');
                 let formData = new FormData(myForm);
                 formData.append('name', this.name);
                 formData.append('phone', this.phone);
-
                 if ((this.$store.state.activeMarka || this.$store.state.activeMarka === 0) && (this.$store.state.activeModel || this.$store.state.activeModel === 0)) {
                     formData.append('Marka', this.$store.state.models[this.$store.state.activeMarka].title);
                     formData.append('Model', this.$store.state.models[this.$store.state.activeMarka].items[this.$store.state.activeModel].name);
@@ -92,7 +90,7 @@
                     formData.append('Model', 'не выбран');
                 }
                 formData.append('data', JSON.stringify(this.$store.state.formData));
-                formData.append('total', this.$store.getters.Total);
+                formData.append('total', this.$store.state.Total);
                 formData.append('photo', this.$store.state.result);
 
                 this.$http.post(formUrl,
